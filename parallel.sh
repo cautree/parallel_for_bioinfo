@@ -1,0 +1,1 @@
+parallel --dry-run -j 4 -k echo \"{} "<-- a number"\" ::: `seq 1 5`
