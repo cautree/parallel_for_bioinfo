@@ -26,4 +26,6 @@ cat file | parallel --eta --verbose "mv {} keep"
 zcat *R1* | paste - - - - | wc -l 
 
 
+## get the well position for the fastq files
+aws s3 ls s3://s3_bucket/220616-UDI-PlexC_FASTQ/ |  awk '{$1=$1}1' OFS="," | cut -f 4 -d "," | cut -f 2  -d "_" | sort | uniq > well
 
