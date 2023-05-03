@@ -14,6 +14,10 @@ do
 done <temp
 
 
+## regex for well location of 96 well plate
+cat info_email | tail -10 | grep -o -E  "[A-H]{1}[0-9]{2}" > well.txt
+
+
 
 
 
