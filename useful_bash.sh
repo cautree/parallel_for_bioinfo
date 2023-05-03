@@ -40,5 +40,8 @@ cat lambda-seq/lambda.fa | dreg -filter -pattern 'GACTGCCCAGGAGGC' | grep -E "re
 ## [according to https://www.biostars.org/p/404859/]
 awk 'OFS=" " {print $1"\t", $2"\t", $3"\t"}' regions_file.bed | tr -d " " > outputs/lambda_amplicon_4.bed
 
+## select fasta from reference file based on bed file
+bedtools getfasta -fi ../lambda_seq/lambda.fa -bed lambda_amplicon_4.bed 
+
 
 
