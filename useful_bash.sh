@@ -22,4 +22,8 @@ ls -1 | grep -f ../../meta_data/20230322_20ng.txt > file
 cat file | parallel --eta --verbose "mv {} keep"
 
 
+## counts total reads of all the R1 file  in one folder
+zcat *R1* | paste - - - - | wc -l 
+
+
 
