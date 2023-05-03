@@ -25,3 +25,17 @@ plink --vcf $VCF --double-id --allow-extra-chr \
 --make-bed --pca --out tomato
 
 
+
+
+
+##this is for get the relatedness using plink genome
+VCF=mpileup.vcf.gz
+/Users/yanyan/Documents/software/plink_mac_20221210/plink --vcf $VCF --double-id --allow-extra-chr --indep-pairwise 50 10 0.1 --out cannabis_mpileup
+/Users/yanyan/Documents/software/plink_mac_20221210/plink --vcf $VCF --double-id --allow-extra-chr \
+--extract cannabis_mpileup.prune.in \
+--recode transpose \
+--out cannabis_mpileup 
+
+/Users/yanyan/Documents/software/plink_mac_20221210/plink --tfile cannabis_mpileup --genome --out cannabis_mpileup --allow-extra-chr
+
+
