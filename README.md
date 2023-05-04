@@ -1,1 +1,1 @@
-this is collection of code in my job, not just bash parallel
+this is collection of code I find useful, not just bash parallel
