@@ -51,7 +51,7 @@ awk '/hunger/&&/and/' resources/gutenberg/pg74.txt
 #contain either hunger or hunger
 awk '/hunger|together/' resources/gutenberg/pg74.txt
 
-
-
+## counts lines has digits
+cat test.txt | awk -e ' /[[:digit:]]/ { acount +=1 }  END { print acount}'
 
 
