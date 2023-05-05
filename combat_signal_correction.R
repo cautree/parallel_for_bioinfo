@@ -1,7 +1,7 @@
 library(dplyr)
 library(sva)
 
-df_orig = data.table::fread("/an/vital/metabolomics/QA/yliu/jupiter_meta/check_data/jupyter_experimental_data_20200226.csv")
+df_orig = data.table::fread("experimental_data_20200226.csv")
 df_orig = as.data.frame(df_orig)
 
 #get baseline data for different batch
