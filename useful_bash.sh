@@ -56,3 +56,7 @@ cat test.txt | awk -e ' /[[:digit:]]/ { acount +=1 }  END { print acount}'
 
 ## get everything except the first column
 cat test.txt | cut -f2- -d " " 
+
+## bcftools view options, -H; supress header, -i: filter, -c1: at least one allele difference from ref, -V: exclude 
+cat 220623-PB184-diploid-8x.vcf | bcftools view -H -i "QUAL>20" -c1 -V indels - | cut -f 2,4,5,6
+
