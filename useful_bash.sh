@@ -54,4 +54,5 @@ awk '/hunger|together/' resources/gutenberg/pg74.txt
 ## counts lines has digits
 cat test.txt | awk -e ' /[[:digit:]]/ { acount +=1 }  END { print acount}'
 
-
+## get everything except the first column
+cat test.txt | cut -f2- -d " " 
