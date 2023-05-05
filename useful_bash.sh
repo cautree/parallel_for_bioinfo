@@ -64,3 +64,5 @@ cat 220623-PB184-diploid-8x.vcf | bcftools view -H -i "QUAL>20" -c1 -V indels - 
 aws s3 ls s3://s3_bucket/ | grep "[[:space:]]ecoli.fa"| awk '{$1=$1}1' OFS="," | cut -f 4 -d ","  
 
 
+## awk filter based on one column
+cat coverage_E10_E11.coverage | awk '/chr22/' > chr22.coverage
