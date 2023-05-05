@@ -45,3 +45,13 @@ bedtools getfasta -fi ../lambda_seq/lambda.fa -bed lambda_amplicon_4.bed
 
 
 
+#contain both hunger & and on the same line
+awk '/hunger/&&/and/' resources/gutenberg/pg74.txt
+
+#contain either hunger or hunger
+awk '/hunger|together/' resources/gutenberg/pg74.txt
+
+
+
+
+
