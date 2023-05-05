@@ -61,6 +61,6 @@ cat test.txt | cut -f2- -d " "
 cat 220623-PB184-diploid-8x.vcf | bcftools view -H -i "QUAL>20" -c1 -V indels - | cut -f 2,4,5,6
 
 ## grep space, get ecoli.fa, not kk_ecoli.fa
-aws s3 ls s3://s3_bucket | grep "[[:space:]]ecoli.fa"| awk '{$1=$1}1' OFS="," | cut -f 4 -d ","  
+aws s3 ls s3://s3_bucket/ | grep "[[:space:]]ecoli.fa"| awk '{$1=$1}1' OFS="," | cut -f 4 -d ","  
 
 
