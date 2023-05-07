@@ -25,3 +25,8 @@ for offset in [7, 14, 21, 28]:
 # df.columns 
 # brand speed
 # df.brand.name will give you "brand"
+
+
+## combine newly created columns with previously exist columns in dataframe
+cols = df.columns
+df = df[list(cols) + ['well', 'row_sort', 'column_sort', '% of the plate']]
