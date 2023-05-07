@@ -30,3 +30,7 @@ for offset in [7, 14, 21, 28]:
 ## combine newly created columns with previously exist columns in dataframe
 cols = df.columns
 df = df[list(cols) + ['well', 'row_sort', 'column_sort', '% of the plate']]
+
+## longer index of a string will not give an error
+project = "long_sequence"
+project[:31] # will not give an error
