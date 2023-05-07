@@ -20,3 +20,8 @@ pivoted_df = df_tech.pivot(index='Date', columns='Name', values='Close')
 delta_dict = {}
 for offset in [7, 14, 21, 28]:
     delta_dict['delta_{}'.format(offset)] = pivoted_df / pivoted_df.shift(offset) - 1.0
+    
+    
+# df.columns 
+# brand speed
+# df.brand.name will give you "brand"
