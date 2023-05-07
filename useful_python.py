@@ -34,3 +34,12 @@ df = df[list(cols) + ['well', 'row_sort', 'column_sort', '% of the plate']]
 ## longer index of a string will not give an error
 project = "long_sequence"
 project[:31] # will not give an error
+
+
+## save a dataframe into different sheet of excels based on a categorical variable, such as project here
+
+writer = pd.ExcelWriter(output_file)
+for project in sorted([p for p in set(raw.Project) if p != 'default']):
+    df = raw[raw.Project == project].reset_index(drop = True)
+    df.to_excel(writer, sheet_name = project[:31], index = False)
+writer.close()
