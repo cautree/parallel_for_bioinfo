@@ -43,3 +43,16 @@ for project in sorted([p for p in set(raw.Project) if p != 'default']):
     df = raw[raw.Project == project].reset_index(drop = True)
     df.to_excel(writer, sheet_name = project[:31], index = False)
 writer.close()
+
+## get summary stats by group, and get the total to merge [concat] into the same data frame
+output_stats = 'seq_stats.txt'
+
+stats = raw.groupby('Project')['Yield'].sum().reset_index()
+stats['Project'] = stats.Project.apply(lambda x: 'Undetermined' if x=='default' else x)
+sum_stats = pd.DataFrame([['Total', stats['Yield'].sum()]], columns = ['Project', 'Yield'])
+## concat, vertically
+stats = pd.concat([stats, sum_stats], ignore_index=True)
+stats['Yield'] = stats['Yield']/1000
+stats['Yield'] = stats.Yield.apply(lambda x: '%.3f' % x) + 'Gb'
+stats[['Project', 'Yield']].to_csv(output_stats, index = False, header = False, sep = '\t')
+
