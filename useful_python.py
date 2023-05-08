@@ -84,3 +84,7 @@ df.loc['Empty'] = ''
 ## check for a combined duplicates in two columns
 if df.duplicated(subset=['a', 'b']).any():
     raise ValueError('a b pair duplicated')
+    
+    
+## check how many groups are there after groupby
+df.groupby(['a', 'b']).ngroups
