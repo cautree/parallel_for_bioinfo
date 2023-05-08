@@ -66,5 +66,9 @@ df.Sample.unique()
 
 ## get the string length groups for a specific column, like there are two groups, one group of primer 18bp, and another 20bp
 df.primer.str.len().unique()
+
+## check if the value of a column start with something
+primers=df.primer
+primers.startswith("A")
             
 
