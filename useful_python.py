@@ -63,5 +63,8 @@ temp = pd.DataFrame( columns = ["a","b","c","d"])
 
 ## get the unique values for a specific columns, return a list
 df.Sample.unique()
+
+## get the string length groups for a specific column, like there are two groups, one group of primer 18bp, and another 20bp
+df.primer.str.len().unique()
             
 
