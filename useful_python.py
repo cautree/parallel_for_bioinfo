@@ -88,3 +88,26 @@ if df.duplicated(subset=['a', 'b']).any():
     
 ## check how many groups are there after groupby
 df.groupby(['a', 'b']).ngroups
+
+
+## save each column of data into a csv file, transforming long data into wide data using pivot
+x = '20220504_sequencerA'
+date, sequencer = x.split('_')
+df = pd.read_excel('{}_{}.xlsx'.format(date, sequencer), sheet_name='a')
+
+df['forward'] = df.Sample.str.split('_').str[1]
+df['reverse'] = df.Sample.str.split('_').str[2]
+
+for i in df.Project.unique():
+    if i == 'default':
+        continue
+    else:
+        temp_df=df[df.Project==i]
+        names = zip(['% A', '% B', '$ C'],
+                    ['A', 'B', 'C'])
+    for val, name in names:
+        out_path = '{:}_{:}_{:}_{:}.sorted.csv'.format(date, sequencer, i, name)
+        tmp = temp_df.groupby(['forward', 'reverse'])[val].sum().reset_index().pivot(index='forward', columns='reverse', values=val)
+        tmp=tmp[tmp.index.notnull()]
+        tmp=tmp.loc[:, tmp.columns.notnull()]
+        tmp.to_csv(out_path)
