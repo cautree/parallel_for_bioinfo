@@ -79,3 +79,8 @@ df.groupby('Sample_Plate').count()
 
 ## add an addtioanl row at the end of a dataframe, the row index is "Empty"
 df.loc['Empty'] = ''
+
+
+## check for a combined duplicates in two columns
+if df.duplicated(subset=['a', 'b']).any():
+    raise ValueError('a b pair duplicated')
