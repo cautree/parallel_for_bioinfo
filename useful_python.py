@@ -56,3 +56,12 @@ stats['Yield'] = stats['Yield']/1000
 stats['Yield'] = stats.Yield.apply(lambda x: '%.3f' % x) + 'Gb'
 stats[['Project', 'Yield']].to_csv(output_stats, index = False, header = False, sep = '\t')
 
+
+
+## create an empty python data frame, with column names defined
+temp = pd.DataFrame( columns = ["a","b","c","d"])
+
+## get the unique values for a specific columns, return a list
+df.Sample.unique()
+            
+
