@@ -72,3 +72,6 @@ primers=df.primer
 primers.startswith("A")
             
 
+## check if there are missing value in the groups, if there is missing values in any column, the count value is smaller
+## this returns a data frame
+df.groupby('Sample_Plate').count()
