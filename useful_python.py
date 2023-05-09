@@ -178,3 +178,13 @@ for group in file_groups:
 writer.close()
 
 
+## fillna, use a dictionary to fill na
+#    A    B   C    D
+#0  NaN  2.0 NaN  0.0
+#1  3.0  4.0 NaN  1.0
+#2  NaN  NaN NaN  NaN
+#3  NaN  3.0 NaN  4.0
+
+In [136]:df.index
+Out[136]: RangeIndex(start=0, stop=4, step=1)
+df.C.fillna(dict(zip([0,1,2,3],[0,10,20,30])                                                   
