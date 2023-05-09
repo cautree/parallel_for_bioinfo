@@ -131,3 +131,50 @@ for path in paths:
         tmp[samp] = 0
 
 df.to_csv(out_file, float_format='%.0f', index = False)
+
+
+
+## one metric a excel sheet, save data into one excel file
+import os
+import pandas as pd
+
+paths = [ "metrics/" + path for path in sorted(os.listdir('metrics')) if path.endswith('.txt')]
+output_path = "metrics.xlsx"
+
+# define the output file name
+writer = pd.ExcelWriter(output_path)
+
+# create list of file extensions and dict of sheetnames for excel file
+endings = ['.metricA.txt',
+           '.metricB.txt']
+
+sheetnames = ['CollectMetricA',
+              'CollectMetricB']
+
+sheet_dict = dict(zip(endings, sheetnames))
+
+# iterate through endings 
+for ending in endings:
+    df = pd.DataFrame([])
+    for path in [path for path in paths if path.endswith(ending)]:
+        # for each path with extension, create sample name
+        sample = path.replace(ending,'').split('/')[-1
+
+        # read in data from that path
+        try:
+            tmp = pd.read_csv(path, delimiter='\t', skiprows=6, nrows=1)
+            tmp = tmp.T
+            tmp.columns = [sample]
+        except:
+            tmp = pd.DataFrame([], columns = [sample])
+
+        # append data to dataframe, notice it is full join, both left index and right index kept
+        # for the first round, df is empty, then tmp file's index becomes the merged file index                                            
+        df = df.merge(tmp, left_index=True, right_index=True, how='outer')
+
+    if len(df) > 0:
+        df.T.sort_index().to_excel(writer, sheet_name = sheet_dict[ending][:30])
+
+writer.close()
+
+
