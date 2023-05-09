@@ -145,20 +145,20 @@ output_path = "metrics.xlsx"
 writer = pd.ExcelWriter(output_path)
 
 # create list of file extensions and dict of sheetnames for excel file
-endings = ['.metricA.txt',
+file_groups = ['.metricA.txt',
            '.metricB.txt']
 
-sheetnames = ['CollectMetricA',
+sheet_ID = ['CollectMetricA',
               'CollectMetricB']
 
-sheet_dict = dict(zip(endings, sheetnames))
+sheet_dict = dict(zip(file_groups, sheet_ID))
 
-# iterate through endings 
-for ending in endings:
+# iterate through file_groups 
+for group in file_groups:
     df = pd.DataFrame([])
     for path in [path for path in paths if path.endswith(ending)]:
-        # for each path with extension, create sample name
-        sample = path.replace(ending,'').split('/')[-1
+        # for each path within the file group, create sample name
+        sample = path.replace(group,'').split('/')[-1
 
         # read in data from that path
         try:
@@ -173,7 +173,7 @@ for ending in endings:
         df = df.merge(tmp, left_index=True, right_index=True, how='outer')
 
     if len(df) > 0:
-        df.T.sort_index().to_excel(writer, sheet_name = sheet_dict[ending][:30])
+        df.T.sort_index().to_excel(writer, sheet_name = sheet_dict[group][:30])
 
 writer.close()
 
