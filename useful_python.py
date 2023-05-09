@@ -111,3 +111,23 @@ for i in df.Project.unique():
         tmp=tmp[tmp.index.notnull()]
         tmp=tmp.loc[:, tmp.columns.notnull()]
         tmp.to_csv(out_path)
+        
+## python way to read merge csv file into one big file
+out_file =  'merged.csv'
+
+paths = [path for path in sorted(os.listdir('.')) if path.endswith('.csv')]
+
+df = pd.DataFrame(range(1,1001), columns = ['count'])
+
+for path in paths:
+    samp = path.replace('.csv','')
+
+    try:
+        tmp = pd.read_csv(path)
+        tmp.columns = ['count', samp]
+        df = df.merge(tmp, how = 'left').fillna(0)
+    except:
+        tmp = pd.DataFrame(range(1,1001), columns = ['count'])
+        tmp[samp] = 0
+
+df.to_csv(out_file, float_format='%.0f', index = False)
