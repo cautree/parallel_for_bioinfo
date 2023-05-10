@@ -190,6 +190,13 @@ writer.close()
 #2  NaN  NaN NaN  NaN
 #3  NaN  3.0 NaN  4.0
 
-In [136]:df.index
-Out[136]: RangeIndex(start=0, stop=4, step=1)
-df.C.fillna(dict(zip([0,1,2,3],[0,10,20,30])                                                   
+#In [136]:df.index
+#Out[136]: RangeIndex(start=0, stop=4, step=1)
+df.C.fillna(dict(zip([0,1,2,3],[0,10,20,30])  
+                 
+                 
+## parse excel files
+path = "fileA.xlsx"
+excel = pd.ExcelFile(path)
+for sheet in excel.sheet_names:
+    df = excel.parse(sheet)
