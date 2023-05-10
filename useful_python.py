@@ -45,16 +45,21 @@ for project in sorted([p for p in set(raw.Project) if p != 'default']):
 writer.close()
 
 ## get summary stats by group, and get the total to merge [concat] into the same data frame
-output_stats = 'seq_stats.txt'
+output_stats = 'stats.txt'
 
-stats = raw.groupby('Project')['Yield'].sum().reset_index()
-stats['Project'] = stats.Project.apply(lambda x: 'Undetermined' if x=='default' else x)
-sum_stats = pd.DataFrame([['Total', stats['Yield'].sum()]], columns = ['Project', 'Yield'])
+stats = raw.groupby('group')['count'].sum().reset_index()
+stats['group'] = stats.Project.apply(lambda x: 'Undefined' if x=='.' else x)
+
+## create a smaller data frame with the same columns to concat with the stats df above
+sum_stats = pd.DataFrame([['Total', stats['count'].sum()]], columns = ['group', 'count'])
+#  group	count
+#0	Total	5072
+
 ## concat, vertically
 stats = pd.concat([stats, sum_stats], ignore_index=True)
-stats['Yield'] = stats['Yield']/1000
-stats['Yield'] = stats.Yield.apply(lambda x: '%.3f' % x) + 'Gb'
-stats[['Project', 'Yield']].to_csv(output_stats, index = False, header = False, sep = '\t')
+stats['count'] = stats['count']/1000
+stats['count'] = stats.count.apply(lambda x: '%.3f' % x) + 'oz'
+stats[['group', 'count']].to_csv(output_stats, index = False, header = False, sep = '\t')
 
 
 
