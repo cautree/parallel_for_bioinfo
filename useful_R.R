@@ -13,3 +13,7 @@ purrr::walk2(plot_df$plot, plot_df$well, ~{
      print(.x)
      dev.off()
 })
+
+
+## turn many columns of factor vars in to numeric at the same time
+n_covars <- map_dfc(covars[,-c(1:2)],as.numeric)
