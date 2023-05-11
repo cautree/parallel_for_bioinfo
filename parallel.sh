@@ -15,3 +15,5 @@ cat file|sed  s/\ //g | parallel "samtools depth -a bam/{}.bam > bam_coverage/{}
 cat file | parallel -j 4 "bwa mem  ref/hg38.fa fastq/{}_R1_001.fastq.gz fastq/{}_R2_001.fastq.gz | samtools view -bh -F2048 - | samtools sort > bam/{}.bam"
 
 
+ls -1 | sed 's/.final.fasta//g' > file
+cat file| parallel "bwa index DF825_SO11626/{}.final.fasta"
