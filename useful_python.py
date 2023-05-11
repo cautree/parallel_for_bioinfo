@@ -204,3 +204,7 @@ for sheet in excel.sheet_names:
                  
 ## if there is ? in the report for numerical variable, how to replace it as 0, then calculate the mean
 df.A.astype(str).str.replace('?','0').astype(float).mean())
+            
+            
+## str connected
+ tmp.metric_name.str.lstrip().str.replace('|','')
