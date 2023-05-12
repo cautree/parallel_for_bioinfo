@@ -17,3 +17,9 @@ purrr::walk2(plot_df$plot, plot_df$well, ~{
 
 ## turn many columns of factor vars in to numeric at the same time
 n_covars <- map_dfc(covars[,-c(1:2)],as.numeric)
+
+
+## turn everything into numberic var first, then do the correlation and plot
+corrplot(cor(n_covars[,-1],n_phenos),
+         method = "circle",
+         cl.cex=0.6,cl.ratio=0.5,cl.align.text = "l", tl.col = "black")
