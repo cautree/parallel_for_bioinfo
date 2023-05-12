@@ -37,3 +37,8 @@ ComplexHeatmap::draw(htc)
 ## prop.table
 msitab <- with(coad$covars,table(MSI_status,sex))
 prop.table(msitab,2)
+
+
+## correlation plots
+cormat <- cor(coad$covars[,1:5],use="pairwise.complete.obs")
+corrplot::corrplot(cormat, method="square")
