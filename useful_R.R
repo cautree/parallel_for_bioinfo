@@ -23,3 +23,13 @@ n_covars <- map_dfc(covars[,-c(1:2)],as.numeric)
 corrplot(cor(n_covars[,-1],n_phenos),
          method = "circle",
          cl.cex=0.6,cl.ratio=0.5,cl.align.text = "l", tl.col = "black")
+         
+         
+##  complex heatmap
+n_exposome <- map_dfc(expsms[,-1],as.numeric)
+cor_exposome <- cor(n_exposome)
+htc <- ComplexHeatmap::Heatmap(cor_exposome,
+                               name = "Cor",
+                show_column_names = FALSE,
+              show_row_names = FALSE)
+ComplexHeatmap::draw(htc)
