@@ -33,3 +33,7 @@ htc <- ComplexHeatmap::Heatmap(cor_exposome,
                 show_column_names = FALSE,
               show_row_names = FALSE)
 ComplexHeatmap::draw(htc)
+
+## prop.table
+msitab <- with(coad$covars,table(MSI_status,sex))
+prop.table(msitab,2)
