@@ -67,3 +67,12 @@ aws s3 ls s3://s3_bucket/ | grep "[[:space:]]ecoli.fa"| awk '{$1=$1}1' OFS="," |
 ## awk filter based on one column, very slow so better use bed file during using samtools depth
 cat coverage_E10_E11.coverage | awk '/chr22/' > chr22.coverage
 samtools depth -a 230426_E09.md.bam 230426_E10.md.bam 230426_E11.md.bam -b chr22.bed > chr22_E091011.coverage
+
+
+## a quick summary of dataframe
+summarytools::view(dfSummary(as.data.frame(mtcars), 
+                             style = 'grid',
+                             max.distinct.values = 10, 
+                             plain.ascii =   F, 
+                             valid.col = F, 
+                             headings = F), method = "render")
