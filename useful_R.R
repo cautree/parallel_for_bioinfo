@@ -50,3 +50,12 @@ is.element(coad$fdnam$Chr,c("X","Y"))
 ## get the rank of each element in a vector, then get the pisition that pass the threashhold
 rfmad <- rank(-fmad)
 fidx <- which(rfmad <= 500)
+
+
+## easy create of correlation plots
+cormat <- cor(X, use="complete.obs")
+corrplot(cormat, type="upper", order="hclust",
+         col=brewer.pal(n=8, name="RdYlBu"),
+         title = "",
+         #addCoef.col = "black",
+         tl.cex=.5, number.cex=.5)
