@@ -42,3 +42,7 @@ prop.table(msitab,2)
 ## correlation plots
 cormat <- cor(coad$covars[,1:5],use="pairwise.complete.obs")
 corrplot::corrplot(cormat, method="square")
+
+
+## is.element to check if the first arguemnt in the set (second argument)
+is.element(coad$fdnam$Chr,c("X","Y"))
