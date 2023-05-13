@@ -76,3 +76,11 @@ summarytools::view(dfSummary(as.data.frame(mtcars),
                              plain.ascii =   F, 
                              valid.col = F, 
                              headings = F), method = "render")
+
+## corrplot
+cormat <- cor(X, use="complete.obs")
+corrplot(cormat, type="upper", order="hclust",
+         col=brewer.pal(n=8, name="RdYlBu"),
+         title = "",
+         addCoef.col = "black",
+         tl.cex=.5, number.cex=.5)
