@@ -126,3 +126,7 @@ echo "chr1:28427874-28425431" | sed  -e 's/:/\t/' -e 's/-/\t/'
 
 ## using tr
 echo "chr1:28427874-28425431" | tr ':-' '\t'
+
+
+## subshell, the end result is both commdn will be changed to step, if no (), only one will be changed
+(echo "this command"; echo "that command") | sed 's/command/step/'
