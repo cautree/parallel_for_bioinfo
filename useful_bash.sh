@@ -138,3 +138,7 @@ awk '$1 ~ /chr1/ && $3 - $2 > 10' example.bed
 
 ## wak BEGIN, END, notice {} is connected by ;
 awk 'BEGIN{ s = 0 }; { s += ($3-$2) }; END{ print "mean: " s/NR };'
+
+
+## filter to see if the row contains a specific val, if yes, that row is returned
+awk '/chr3/' example.bed 
