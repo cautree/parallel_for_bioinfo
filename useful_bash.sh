@@ -149,3 +149,7 @@ awk '/Lypla1/ { feature[$3] += 1 }; END { for (k in feature) print k "\t" featur
 
 ## linux way to do the same thing as above
 grep "Lypla1" ../data/Mus_musculus.GRCm38.75_chr1.gtf | cut -f 3 | sort | uniq -c
+
+
+## Commands:"create,"extract,"gzip,"file,"list,"verbose"
+tar cvf $myfile.tar. $sample1.fq. $sample2.fq
