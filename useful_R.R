@@ -50,3 +50,7 @@ is.element(coad$fdnam$Chr,c("X","Y"))
 ## get the rank of each element in a vector, then get the pisition that pass the threashhold
 rfmad <- rank(-fmad)
 fidx <- which(rfmad <= 500)
+
+
+## get rid the first row
+tail -n +2 nums.txt
