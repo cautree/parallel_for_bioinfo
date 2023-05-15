@@ -142,3 +142,7 @@ awk 'BEGIN{ s = 0 }; { s += ($3-$2) }; END{ print "mean: " s/NR };'
 
 ## filter to see if the row contains a specific val, if yes, that row is returned
 awk '/chr3/' example.bed 
+
+
+## awk associative array
+awk '/Lypla1/ { feature[$3] += 1 }; END { for (k in feature) print k "\t" feature[k] }' ../data/Mus_musculus.GRCm38.75_chr1.gtf
