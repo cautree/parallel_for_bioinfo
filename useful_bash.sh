@@ -130,3 +130,7 @@ echo "chr1:28427874-28425431" | tr ':-' '\t'
 
 ## subshell, the end result is both commdn will be changed to step, if no (), only one will be changed
 (echo "this command"; echo "that command") | sed 's/command/step/'
+
+
+## awk filter rows, two conditions connected by &&, ~ here is search patten of /chr1/
+awk '$1 ~ /chr1/ && $3 - $2 > 10' example.bed
