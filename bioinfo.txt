@@ -1,1 +1,4 @@
-
+Entrez
+einfo (tells you what database are available)
+esearch ( searches for concent) 
+efetch (retrieves concent)
