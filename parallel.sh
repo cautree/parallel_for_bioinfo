@@ -22,3 +22,8 @@ cat file| parallel "bwa index DF825_SO11626/{}.final.fasta"
 
 ## one line of code do one action to all the files in one folder
 find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -I{} fastq_stat --in {}.fastq --out ../summaries/{}.txt
+
+
+## xargs, find, basename and parallel
+find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -P 6 -I{} fastq_stat --in {}.fastq --out ../summaries/{}.txt 
+
