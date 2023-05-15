@@ -153,3 +153,9 @@ grep "Lypla1" ../data/Mus_musculus.GRCm38.75_chr1.gtf | cut -f 3 | sort | uniq -
 
 ## Commands:"create,"extract,"gzip,"file,"list,"verbose"
 tar cvf $myfile.tar. $sample1.fq. $sample2.fq
+
+
+## regex
+####AT{3}, A followed by 3 T
+####(AT}{3}, 3 AT in a row
+####(ATG)+C{2}, one or more ATG followed by 2 C
