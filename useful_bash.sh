@@ -107,3 +107,13 @@ do
     # run fastq_stat on a file, writing results to the filename we've # above
     fastq_stat $fastq_file > stats/$results_file
 done
+
+
+
+## sed and regex
+### (chr[^:]+) is to get chr1 etc, [^:]+ means get any char or number but that is not :
+### :([0-9]+)-  get the numbers, which are in btw : and -
+### \1\t\2\t\3 means the three groups are sepearated by tabs
+### original format is sed -E 's/a/b/g' 
+echo "chr1:28427874-28425431" | sed -E 's/^(chr[^:]+):([0-9]+)-([0-9]+)/\1\t\2\t\3/'
+
