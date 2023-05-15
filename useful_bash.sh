@@ -134,3 +134,7 @@ echo "chr1:28427874-28425431" | tr ':-' '\t'
 
 ## awk filter rows, two conditions connected by &&, ~ here is search patten of /chr1/
 awk '$1 ~ /chr1/ && $3 - $2 > 10' example.bed
+
+
+## wak BEGIN, END, notice {} is connected by ;
+awk 'BEGIN{ s = 0 }; { s += ($3-$2) }; END{ print "mean: " s/NR };'
