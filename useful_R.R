@@ -54,3 +54,6 @@ fidx <- which(rfmad <= 500)
 
 ## get rid the first row
 tail -n +2 nums.txt
+
+## see both head and tail of the files
+(head -n 2; tail -n 2) < Mus_musculus.GRCm38.75_chr1.bed
