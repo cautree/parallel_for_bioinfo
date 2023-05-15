@@ -18,3 +18,7 @@ cat file | parallel -j 4 "bwa mem  ref/hg38.fa fastq/{}_R1_001.fastq.gz fastq/{}
 ## bwa index
 ls -1 | sed 's/.final.fasta//g' > file
 cat file| parallel "bwa index DF825_SO11626/{}.final.fasta"
+
+
+## one line of code do one action to all the files in one folder
+find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -I{} fastq_stat --in {}.fastq --out ../summaries/{}.txt
