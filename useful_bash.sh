@@ -146,3 +146,6 @@ awk '/chr3/' example.bed
 
 ## awk associative array
 awk '/Lypla1/ { feature[$3] += 1 }; END { for (k in feature) print k "\t" feature[k] }' ../data/Mus_musculus.GRCm38.75_chr1.gtf
+
+## linux way to do the same thing as above
+grep "Lypla1" ../data/Mus_musculus.GRCm38.75_chr1.gtf | cut -f 3 | sort | uniq -c
