@@ -84,3 +84,26 @@ corrplot(cormat, type="upper", order="hclust",
          title = "",
          addCoef.col = "black",
          tl.cex=.5, number.cex=.5)
+         
+         
+## read sample info from a file and do something to all the files, from bio carpentry
+#!/bin/bash
+
+set -e
+set -u
+set -o pipefail
+
+# specify the input samples file, where the third column is the path to each sample FASTQ file
+sample_info=samples.txt
+
+# create a Bash array from the third column of $sample_info
+sample_files=($(cut -f 3 "$sample_info"))
+
+for fastq_file in ${sample_files[@]} 
+do
+    # strip .fastq from each file, and add suffix "-stats.txt" to create an output filename
+    results_file="$(basename $fastq_file .fastq)-stats.txt"
+    
+    # run fastq_stat on a file, writing results to the filename we've # above
+    fastq_stat $fastq_file > stats/$results_file
+done
