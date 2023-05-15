@@ -117,3 +117,12 @@ done
 ### original format is sed -E 's/a/b/g' 
 echo "chr1:28427874-28425431" | sed -E 's/^(chr[^:]+):([0-9]+)-([0-9]+)/\1\t\2\t\3/'
 
+## using[] in sed, change ":" and "-" in to "\t"
+echo "chr1:28427874-28425431" | sed 's/[:-]/\t/g'
+
+## using sed twice, with pipe or without pipes
+echo "chr1:28427874-28425431" | sed 's/:/\t/' | sed 's/-/\t/' 
+echo "chr1:28427874-28425431" | sed  -e 's/:/\t/' -e 's/-/\t/'
+
+## using tr
+echo "chr1:28427874-28425431" | tr ':-' '\t'
