@@ -175,3 +175,8 @@ print $3, name, $5-$4 +1
 }
 
 cat NC.gff | awk -f split.awk | head -5
+
+
+
+## good to have alias for awk
+alias awk = "awk -F '\t' =v OFS='\t' "
