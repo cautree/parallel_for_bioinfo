@@ -26,3 +26,11 @@ samtools view -c -F 16 results.bam
 ##### note that for BWA, this also means unique alignment
 samtools view -c -q 1 results.bam
 
+
+## samtools idxstats output
+reference sequence name, sequence length, # mapped read-segments and # unmapped read-segments
+amplicon_01     1199    142852  295
+amplicon_02     1170    113312  356
+amplicon_03     1165    105781  217
+amplicon_04     1208    109336  228
+
