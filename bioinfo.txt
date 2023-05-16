@@ -34,3 +34,6 @@ amplicon_02     1170    113312  356
 amplicon_03     1165    105781  217
 amplicon_04     1208    109336  228
 
+## samtools view to view part
+samtools view 210629-Tagify.bam $amplicon_01
+
