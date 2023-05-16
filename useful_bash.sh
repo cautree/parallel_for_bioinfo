@@ -159,3 +159,19 @@ tar cvf $myfile.tar. $sample1.fq. $sample2.fq
 ####AT{3}, A followed by 3 T
 ####(AT}{3}, 3 AT in a row
 ####(ATG)+C{2}, one or more ATG followed by 2 C
+
+
+## complicated awk, file name is split.awk
+$3 == "gene" {
+# split the 9th column by ;
+split($9, x, ";")
+split(x[1], y, " ")
+## remove the double quotes around the gene name
+name = y[2]
+## substitue of " with empty space
+gsbu("\"", "", name)
+print $3, name, $5-$4 +1
+
+}
+
+cat NC.gff | awk -f split.awk | head -5
