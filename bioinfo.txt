@@ -6,5 +6,8 @@ efetch (retrieves concent)
 
 #keep if matches
 samtools view -f
+samtools view -c -f 4 results.bam # get the unmapped reads
 #remove if matches
 samtools view -F
+samtools view -c -F 4 results.bam # get the mapped reads
+
