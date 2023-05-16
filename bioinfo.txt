@@ -11,3 +11,18 @@ samtools view -c -f 4 results.bam # get the unmapped reads
 samtools view -F
 samtools view -c -F 4 results.bam # get the mapped reads
 
+## samtools filtering
+##### how many reads in total
+samtools view -c results.bam
+##### reads that cannot be mapped
+samtools view -c -f 4 results.bam
+##### reads that can be mapped
+samtools view -c -F 4 results.bam
+##### reads that map to reverse strand
+samtools view -c -f 16 results.bam
+##### reads that map to the forward strand
+samtools view -c -F 16 results.bam
+### reads that have min mapping quality of 1
+##### note that for BWA, this also means unique alignment
+samtools view -c -q 1 results.bam
+
