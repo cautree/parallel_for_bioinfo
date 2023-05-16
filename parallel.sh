@@ -27,3 +27,6 @@ find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -I{} fastq_stat --in
 ## xargs, find, basename and parallel
 find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -P 6 -I{} fastq_stat --in {}.fastq --out ../summaries/{}.txt 
 
+## use awk to create scripts for automation
+cat sraids.txt | awk '{print "fastq-dump -X 2000 --split-files -0 sra" $1}' > get_data.sh
+bash get-data.sh
