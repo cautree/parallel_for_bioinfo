@@ -208,3 +208,10 @@ df.A.astype(str).str.replace('?','0').astype(float).mean())
             
 ## str connected
  tmp.metric_name.str.lstrip().str.replace('|','')
+            
+            
+## str.maketrans works sames as tr in bash
+def reverse_complement_dna(dna):
+    '''Returns the reverse complement of the given DNA strand.'''
+    transtab = str.maketrans('ATCG', 'TAGC')
+    return dna.translate(transtab)[::-1]
