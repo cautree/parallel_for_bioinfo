@@ -57,3 +57,7 @@ tail -n +2 nums.txt
 
 ## see both head and tail of the files
 (head -n 2; tail -n 2) < Mus_musculus.GRCm38.75_chr1.bed
+
+
+## read files, and as.data.frame at the same time
+as.data.frame(fread(reportPath,stringsAsFactors=FALSE))
