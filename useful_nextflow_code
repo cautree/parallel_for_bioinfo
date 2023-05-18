@@ -1,0 +1,6 @@
+# split fastqs, this is inside the script, notice how the * is used, and how the \ is used
+  for input_demux_bam in \$(ls ${meta.id}_demuxed*.bam) ; do
+    prefix=\${input_demux_bam%%.bam} ;
+    # convert bam
+    bam2fastq -o \$prefix -u \$input_demux_bam ;
+  done
