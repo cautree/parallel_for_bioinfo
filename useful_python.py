@@ -210,8 +210,33 @@ df.A.astype(str).str.replace('?','0').astype(float).mean())
  tmp.metric_name.str.lstrip().str.replace('|','')
             
             
-## str.maketrans works sames as tr in bash
-def reverse_complement_dna(dna):
-    '''Returns the reverse complement of the given DNA strand.'''
-    transtab = str.maketrans('ATCG', 'TAGC')
-    return dna.translate(transtab)[::-1]
+##### python for loop and while loop work together            
+from scripts.FASTA import ReadFASTA
+
+dna, sub_seq = [fasta[1] for fasta in ReadFASTA('data/rosalind_sseq_v2.txt')]
+print(dna)
+print(sub_seq)
+
+#sseq_indicies, i = [], 0
+sseq_indicies = []
+i = 0
+
+for nucleotide in sub_seq:
+    # In practice: Use exception handling/additional constraints as such a subsequence does not necessarily exist.
+    while dna[i] != nucleotide:
+        print("this is in while")
+        print ("this is nucleotide in sub_seq {} ".format(nucleotide))
+        print(dna[i])
+        print(i)
+        
+        i += 1
+        
+
+    # Use i+1 as the indicies because Rosalind starts at i=1 instead of i=0.
+    sseq_indicies.append(str(i+1))
+    i += 1
+    print("this is the position (1 based) of nucletodie that matched to the subseq: {}". format(i))
+
+print (' '.join(sseq_indicies))
+with open('output/030_SSEQ.txt', 'w') as output_data:
+    output_data.write(' '.join(sseq_indicies))
