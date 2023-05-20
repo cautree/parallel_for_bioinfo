@@ -180,3 +180,9 @@ cat NC.gff | awk -f split.awk | head -5
 
 ## good to have alias for awk
 alias awk = "awk -F '\t' =v OFS='\t' "
+
+
+## create resuable function
+i() { (head -n 2; tail -n 2) < "$1" | column -t}
+i a.txt
+
