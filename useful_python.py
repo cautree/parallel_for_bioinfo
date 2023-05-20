@@ -240,3 +240,10 @@ for nucleotide in sub_seq:
 print (' '.join(sseq_indicies))
 with open('output/030_SSEQ.txt', 'w') as output_data:
     output_data.write(' '.join(sseq_indicies))
+            
+            
+##Check if the nucleotides are in the same purine/pyrimidine group.
+[['A', 'G'],['C', 'T']][dna2[i] in ['C', 'T']]
+
+[['A', 'G'],['C', 'T']][True]   ## both are in CT
+[['A', 'G'],['C', 'T']][False]  ## both are in AG
