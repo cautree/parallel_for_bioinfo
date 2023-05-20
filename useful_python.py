@@ -247,3 +247,13 @@ with open('output/030_SSEQ.txt', 'w') as output_data:
 
 [['A', 'G'],['C', 'T']][True]   ## both are in CT
 [['A', 'G'],['C', 'T']][False]  ## both are in AG
+
+            
+## use filter with lambda function, and reduce with lammda function
+dna_groups_new = []
+a = list(filter(lambda x: len(x)>1, dna_groups))
+b = list(filter(lambda x: len(x)==1, dna_groups))
+from functools import reduce
+b = reduce(lambda x,y:x+y, b)
+dna_groups_new.append(a)
+dna_groups_new.append(b)
