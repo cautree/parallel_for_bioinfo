@@ -46,3 +46,16 @@ print(y)
   "sleep": 5,
   "input": "data/yeast/reads/etoh60_1*.fq.gz"
 }
+
+
+## bash variables in nextflow scripts
+process INDEX {
+
+  script:
+  """
+  #set bash variable KMERSIZE
+  KMERSIZE=$params.kmer
+  salmon index -t $projectDir/data/yeast/transcriptome/Saccharomyces_cerevisiae.R64-1-1.cdna.all.fa.gz -i index --kmer \$KMERSIZE
+  echo "kmer size is $params.kmer"
+  """
+}
