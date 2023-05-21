@@ -1,3 +1,8 @@
 ch_input = ch_param.combine( CREATE.out.toList() ) // more than two compoent, start from 2 to the last is nested in the below code
 
 ch_input = ch_param.combine( CREATE.out.toList().toList() ) // two component, second one is a list
+
+## conditional
+workflow {
+  (params.flag ? bar : foo) | omega
+}
