@@ -38,3 +38,11 @@ println(y)
 prefix = { "chr${it}"}
 y = x.collect(prefix)
 print(y)
+
+
+##nextflow run wc-params.nf -params-file wc-params.json
+# wc-params.json
+{
+  "sleep": 5,
+  "input": "data/yeast/reads/etoh60_1*.fq.gz"
+}
