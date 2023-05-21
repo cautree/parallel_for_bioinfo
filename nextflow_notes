@@ -28,3 +28,13 @@ kmers = [11,21,27,31]
 println("The first three elements in the Lists are. $kmers[0..2]")
 ## this works
 println("The first three elements in the Lists are. ${kmers[0..2]}")
+
+### use closures
+x=[1,2,3,4,5,6]
+chrx = { x -> "chr" + x}
+y = x.collect(chrx)
+println(y)
+
+prefix = { "chr${it}"}
+y = x.collect(prefix)
+print(y)
