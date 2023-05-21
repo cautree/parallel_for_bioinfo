@@ -20,3 +20,11 @@ tp53 = [chromosome: "chr17",start:7661779 ,end:7687538, genome:'GRCh38', gene: "
 //perform subtraction of end and start coordinates
 region_length = {start,end -> end-start }
 tp53.length = region_length(tp53.start,tp53.end)
+
+
+
+kmers = [11,21,27,31]
+## this does not work
+println("The first three elements in the Lists are. $kmers[0..2]")
+## this works
+println("The first three elements in the Lists are. ${kmers[0..2]}")
