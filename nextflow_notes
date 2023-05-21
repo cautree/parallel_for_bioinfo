@@ -6,3 +6,8 @@ ch_input = ch_param.combine( CREATE.out.toList().toList() ) // two component, se
 workflow {
   (params.flag ? bar : foo) | omega
 }
+
+## conditional 
+(foo_ch, bar_ch) = params.flag
+    ? [ Channel.empty(), Channel.from(1,2,3) ]
+    : [ Channel.from(4,5,6), Channel.empty() ]
