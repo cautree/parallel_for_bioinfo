@@ -186,9 +186,11 @@ workflow {
 
 
 ## these run 3 times
+// debug true, can be replaced by -process.echo
 nextflow.enable.dsl=2
 
 process COMBINE {
+  debug true
   input:
   val x
   val y
