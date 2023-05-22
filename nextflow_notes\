@@ -49,6 +49,8 @@ print(y)
 
 
 ## bash variables in nextflow scripts
+## There is an important difference between single-quoted and double-quoted strings: 
+## Double-quoted strings support variable interpolations, while single-quoted strings do not.
 process INDEX {
 
   script:
