@@ -151,8 +151,57 @@ process INDEX {
     echo Unknown aligner $params.aligner
     """
   }  
+  
+  
+  
+  
+  
+############## channel.of channel.value difference
+##this only run once
+nextflow.enable.dsl=2
+
+process COMBINE {
+  input:
+  val x
+  val y
+
+  script:
+  """
+  echo $x and $y
+  """
+}
+ch_num = Channel.of(1)
+ch_letters = Channel.of('a', 'b', 'c')
+
+workflow {
+  COMBINE(ch_num, ch_letters)
+}
+  
 }
 
 workflow {
   INDEX()
 }
+
+
+
+## these run 3 times
+nextflow.enable.dsl=2
+
+process COMBINE {
+  input:
+  val x
+  val y
+
+  script:
+  """
+  echo $x and $y
+  """
+}
+ch_num = Channel.value(1)
+ch_letters = Channel.of('a', 'b', 'c')
+
+workflow {
+  COMBINE(ch_num, ch_letters)
+}
+
