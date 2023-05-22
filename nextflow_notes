@@ -192,6 +192,7 @@ nextflow.enable.dsl=2
 process COMBINE {
   debug true
   echo true
+  tag "y ${y}"
   input:
   val x
   val y
