@@ -125,3 +125,34 @@ process INDEX {
 workflow {
   INDEX()
 }
+
+
+
+
+############# if in nextflow
+nextflow.enable.dsl=2
+
+params.aligner = 'kallisto'
+
+process INDEX {
+  script:
+  if( params.aligner == 'kallisto' ) {
+    """
+    echo kallisto
+    """
+  }  
+  else if( params.aligner == 'salmon' ) {
+    """
+    echo salmon
+    """
+  }  
+  else {
+    """
+    echo Unknown aligner $params.aligner
+    """
+  }  
+}
+
+workflow {
+  INDEX()
+}
