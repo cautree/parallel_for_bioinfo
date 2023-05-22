@@ -191,6 +191,7 @@ nextflow.enable.dsl=2
 
 process COMBINE {
   debug true
+  echo true
   input:
   val x
   val y
