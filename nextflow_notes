@@ -236,3 +236,18 @@ process INDEX {
   salmon index -t $transcriptome -i index_$kmer -k $kmer
   """
 }
+
+
+## when condition
+process CONDITIONAL {
+  input:
+  val chr
+
+  when:
+  chr <= 5
+
+  script:
+  """
+  echo $chr
+  """
+}
