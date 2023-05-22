@@ -221,3 +221,18 @@ process FASTQC {
   fastqc $read -o fqc_res
   """
 }
+
+## capture the output folder, which is in the code of script
+process INDEX {
+  input:
+  path transcriptome
+  each kmer
+ 
+  output:
+  path "index_${kmer}" //this is in the script
+ 
+  script:
+  """
+  salmon index -t $transcriptome -i index_$kmer -k $kmer
+  """
+}
