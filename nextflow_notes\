@@ -59,3 +59,67 @@ process INDEX {
   echo "kmer size is $params.kmer"
   """
 }
+
+
+## this works
+nextflow.enable.dsl=2
+
+params.kmer = 31
+
+process INDEX {
+
+  shell:
+  '''
+  #set bash variable KMERSIZE
+  KMERSIZE=!{params.kmer}
+  echo $KMERSIZE
+  echo "kmer size is !{params.kmer}"
+  '''
+}
+
+workflow {
+  INDEX()
+}
+
+
+
+## this does not work
+nextflow.enable.dsl=2
+
+params.kmer = 31
+
+process INDEX {
+
+  shell:
+  '''
+  #set bash variable KMERSIZE
+  KMERSIZE=$params.kmer
+  echo \$KMERSIZE
+  echo "kmer size is $params.kmer"
+  '''
+}
+
+workflow {
+  INDEX()
+}
+
+
+## this works
+nextflow.enable.dsl=2
+
+params.kmer = 31
+
+process INDEX {
+
+  shell:
+  '''
+  #set bash variable KMERSIZE
+  KMERSIZE=!{params.kmer}
+  echo \$KMERSIZE
+  echo "kmer size is !{params.kmer}"
+  '''
+}
+
+workflow {
+  INDEX()
+}
