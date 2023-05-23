@@ -344,3 +344,11 @@ channel.fromPath('data/reads/*.fq.gz')
 
 ## join vs groupTuple
 ## join is for two channels and groupTuple is for one channel
+
+reads1_ch = channel
+  .of(['wt', 'wt_1.fq'], ['mut','mut_1.fq'])
+reads2_ch= channel
+  .of(['wt', 'wt_2.fq'], ['mut','mut_2.fq'])
+reads_ch = reads1_ch
+  .join(reads2_ch, by:0)
+  .view()
