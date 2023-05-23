@@ -321,7 +321,18 @@ chr_ch = channel
   .filter( Number )
   .filter({ it%2==0 })
   .view()
-
+  
+  
 chr = channel
   .of( 'chr1', 'chr2' )
   .map ({ it -> it.replaceAll("chr","") })
+  
+  
+  
+fq_ch = channel
+    .fromPath( 'data/reads/*.fq.gz' )
+    .map ({ file -> [file, file.countFastq()] })
+  //  .view ({ file, numreads -> "file $file contains $numreads reads" })
+    .view ({ file, numreads -> "file "+file+" contains " + numreads + " reads" })
+
+
