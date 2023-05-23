@@ -352,3 +352,12 @@ reads2_ch= channel
 reads_ch = reads1_ch
   .join(reads2_ch, by:0)
   .view()
+
+
+
+## read in csv, just as read sample pairs
+csv_ch=channel
+    .fromPath('samples.csv')
+    .splitCsv()
+    .map{ it -> [it[0], [it[1], it[2]]]}
+csv_ch.view()
