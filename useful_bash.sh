@@ -326,3 +326,14 @@ seq 20 | xargs -n5 > file
 awk '$5 ~ /10/' file
 awk '$5 ~ "10"' file
 awk '$5 ~ 10' file
+
+
+
+#####
+## getline							# 读取下一条记录到 $0，更新NF，NR和FNR
+seq 10 | awk '{print $0;getline}'      # 显示奇数行
+seq 10 | awk '{getline; print $0}'     # 显示偶数行
+seq 10 | awk '{getline tmp; print tmp; print $0}'   # 奇偶行对调
+# fastq转换成fasta
+awk '{getline seq; getline comment; getline quality; sub("@", ">", $0); print $0"\n"seq}' file
+awk -v n=$number '{print n, $0}' file
