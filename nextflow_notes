@@ -374,3 +374,7 @@ fq = Channel
      
 ## nextflow log
 nextflow log
+
+
+## look at the work directory
+tree -a work
