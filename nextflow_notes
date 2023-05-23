@@ -365,3 +365,9 @@ csv_ch.view()
 
 ## when use specicify params.reads like --reads on the command line 
 ## Note File paths including one or more wildcards ie. *, ?, etc. MUST be wrapped in single-quoted characters to avoid Bash expanding the glob pattern on the command line.
+
+
+##  use checkIfExists:true to check
+fq = Channel
+     .fromFilePairs("data/reads/*_{1,2}.fq.gz", flat: true,  checkIfExists:true )
+     .view()
