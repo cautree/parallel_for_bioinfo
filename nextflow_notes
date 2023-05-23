@@ -371,3 +371,6 @@ csv_ch.view()
 fq = Channel
      .fromFilePairs("data/reads/*_{1,2}.fq.gz", flat: true,  checkIfExists:true )
      .view()
+     
+## nextflow log
+nextflow log
