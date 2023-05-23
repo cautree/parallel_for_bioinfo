@@ -340,3 +340,7 @@ channel.fromPath('data/reads/*.fq.gz')
        .map{it ->[it.getName().split("_")[0], it]}
        .groupTuple(by:0)
        .view()
+
+
+## join vs groupTuple
+## join is for two channels and groupTuple is for one channel
