@@ -278,3 +278,23 @@ process QUANT {
    --writeMappings | samtools sort | samtools view -bS -o ${sample_id}.bam
   """
 }
+
+
+
+### rename file to save
+process foo {
+  publishDir 'results', saveAs: { filename -> "foo_$filename" }
+
+  output: 
+  path '*.txt'
+
+  '''
+  touch this.txt
+  touch that.txt
+  '''
+}
+
+workflow {
+  foo()
+}
+
