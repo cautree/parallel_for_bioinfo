@@ -363,3 +363,7 @@ awk '!a[$2]++' file		# 第二列出现两次2，只保留第一次出现的那�
 
 awk '{sum+=$1} END {print sum}' file	# 累加文件的第一列
 awk '{sum+=$1} END {print sum/NR}' file	# 求第一列的平均数
+
+time command# 显示命令执行时间
+seq 10			# 产生1到10的整数
+md5sum			# 生成，或验证文件的MD5值
