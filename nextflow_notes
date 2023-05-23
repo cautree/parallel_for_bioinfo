@@ -336,3 +336,7 @@ fq_ch = channel
     .view ({ file, numreads -> "file "+file+" contains " + numreads + " reads" })
 
 
+channel.fromPath('data/reads/*.fq.gz')
+       .map{it ->[it.getName().split("_")[0], it]}
+       .groupTuple(by:0)
+       .view()
