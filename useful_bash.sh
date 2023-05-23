@@ -337,3 +337,9 @@ seq 10 | awk '{getline tmp; print tmp; print $0}'   # 奇偶行对调
 # fastq转换成fasta
 awk '{getline seq; getline comment; getline quality; sub("@", ">", $0); print $0"\n"seq}' file
 awk -v n=$number '{print n, $0}' file
+awk '{print $0}' file	# 打印整行
+awk '{print $1}' file	# 打印第一列
+awk '{print $2}' file	# 打印第二列
+awk '{print $NF}' file	# 打印最后一列
+awk '{print $(NF-1)}' file#打印倒数第二列
+awk -F ';' -v OFS='\t''{print $1,$2,$NF}' file	# 读入的文件以逗号;分隔列，打印第1列，第2列和最后一列，并且打印时以制表符作为列的分隔符
