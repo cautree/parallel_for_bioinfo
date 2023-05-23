@@ -360,3 +360,6 @@ awk '!a[$2]++' file		# 第二列出现两次2，只保留第一次出现的那�
 #1 2 3 4 5
 #11 12 13 14 15
 #16 17 18 19 20
+
+awk '{sum+=$1} END {print sum}' file	# 累加文件的第一列
+awk '{sum+=$1} END {print sum/NR}' file	# 求第一列的平均数
