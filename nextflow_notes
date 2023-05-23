@@ -298,3 +298,30 @@ workflow {
   foo()
 }
 
+
+ch = channel
+  .of('1', '2', '3')
+  .map{it -> "chr"+it}
+  .view()
+
+
+  chr_ch = channel
+    .of( 1..22)
+    .filter( {it -> it>5} )
+    .view()
+
+
+chr_ch = channel
+  .of( 1..22, 'X', 'Y' )
+  .filter(~/^2.*/)
+  .view()
+
+chr_ch = channel
+  .of( 1..22, 'X', 'Y' )
+  .filter( Number )
+  .filter({ it%2==0 })
+  .view()
+
+chr = channel
+  .of( 'chr1', 'chr2' )
+  .map ({ it -> it.replaceAll("chr","") })
