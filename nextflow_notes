@@ -378,3 +378,7 @@ nextflow log
 
 ## look at the work directory
 tree -a work
+
+
+## specify a working dir
+nextflow run wc.nf --input 'data/yeast/reads/temp33*' -w second_work_dir -resume
