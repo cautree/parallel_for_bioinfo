@@ -361,3 +361,7 @@ csv_ch=channel
     .splitCsv()
     .map{ it -> [it[0], [it[1], it[2]]]}
 csv_ch.view()
+
+
+## when use specicify params.reads like --reads on the command line 
+## Note File paths including one or more wildcards ie. *, ?, etc. MUST be wrapped in single-quoted characters to avoid Bash expanding the glob pattern on the command line.
