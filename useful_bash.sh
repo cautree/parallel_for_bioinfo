@@ -233,9 +233,9 @@ disown -r 	                 # 从当前shell中移除运行中的作业，至此
 ./run.sh &> run.sh.log	     # 标准输出和标准错误都输出到定一个文件
 ./run.sh &> /dev/null	     # 丢弃标准输出和标准错误信息
 ###################################################################
-command < file			     # 将file的内容作为command的输入
-command << END			     # 从标准输入（键盘）中读取数据，直到遇到分界符END时停止（分界符用户可以自定义）
-command <file1 > file2	     # 将file1作为command的输入，并将处理结果输出到file2
+#command < file			     # 将file的内容作为command的输入
+#command << END			     # 从标准输入（键盘）中读取数据，直到遇到分界符END时停止（分界符用户可以自定义）
+#command <file1 > file2	     # 将file1作为command的输入，并将处理结果输出到file2
 ### one application
 whileread line
 do
