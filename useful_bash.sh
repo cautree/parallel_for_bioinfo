@@ -464,3 +464,10 @@ gzcat data/DPCh_plate1_F12_S72.R1.fq.gz | awk 'NR==101 || NR==102 {print}'
 
 # Match either "big mess" or "huge mess"
 /(big|huge) mess/
+
+
+##
+awk -F"\t" '
+  NR > 1 {n[$6]++}
+  END {for(i in n) print i ":", n[i]}
+' data/wgs-chinook-samples.tsv 
