@@ -428,3 +428,5 @@ test $VAR = small_and_sweet
 ## echo -e, use as regex, -E, use as it is
 echo -e Hi "\t\t\t" There "\n\n"
 echo -E Bye "\t\t\t" For now "\n\n"
+## -n    Do not print the trailing newline character
+echo -n Good to see you "\n\n"
