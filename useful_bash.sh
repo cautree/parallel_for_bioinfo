@@ -471,3 +471,10 @@ awk -F"\t" '
   NR > 1 {n[$6]++}
   END {for(i in n) print i ":", n[i]}
 ' data/wgs-chinook-samples.tsv 
+
+
+##
+NB: Parsing CSV files with awk is not always so straightforward as doing -F"," 
+because the CSV specification allows for commas that do not separate fields to be hidden within quotation marks. 
+Don’t expect to parse complex CSV files made by Excel, for example, 
+to be parsed this easily with awk. It is better to save them as TAB separate files, typically.
