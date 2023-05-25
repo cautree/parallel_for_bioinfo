@@ -1,0 +1,10 @@
+Built in functions: awk has a limited set of built-in functions. See man awk for a full listing. The ones I find I use all the time are:
+
+length(n) : return the number of characters of the variable n
+substr(s, m, n) : return the portion of string s that begins at position m (counted starting from 1), and is n characters long
+sub(r, t, s) : substitute string t for the first occurrence of the regular expression r in the string s. If s is not given, $0 is used.
+gsub : just like sub but replaces all (rather than just the first) occurrences of the regular expression r in string s.
+split(s, a, fs) : split the string s into an array variable named a at occurrences of the regular expression fs. 
+  The function returns the number of pieces the string was split into. 
+  Afterward each part of the string can be accessed like a[1], a[2], and so forth. 
+  (Good example = splitting out fields from a column in a VCF file.)
