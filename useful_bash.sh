@@ -400,4 +400,4 @@ done
 #the shell knows nothing about it FileB
 
 { cat FileA; echo xxxxx; cat FileB; NewVar=15; } > Both
-#the shell does know nothing about it FileB
+#the shell does know nothing about it FileB, notice the blank space after { and before }, those are required
