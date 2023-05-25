@@ -411,3 +411,13 @@ for i in oranges bananas apples; do
   echo "I like $i"
 done
 
+
+# this
+test $VAR = small_and_sweet
+
+# is equivalent to:
+[ $VAR = "small_and_sweet" ];
+
+#A[A-D]
+#img.{png,jpg,svg}
+
