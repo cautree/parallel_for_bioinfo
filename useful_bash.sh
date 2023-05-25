@@ -425,3 +425,6 @@ test $VAR = small_and_sweet
 #alias ls='ls -GFh'
 #PATH=$PATH:/a-new/program/directory
 
+## echo -e, use as regex, -E, use as it is
+echo -e Hi "\t\t\t" There "\n\n"
+echo -E Bye "\t\t\t" For now "\n\n"
