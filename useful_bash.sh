@@ -460,3 +460,7 @@ gzcat data/DPCh_plate1_F12_S72.R1.fq.gz | awk 'NR==101 || NR==102 {print}'
 
 
 ## [ ]	Match any single character from a character class (see below)
+
+
+# Match either "big mess" or "huge mess"
+/(big|huge) mess/
