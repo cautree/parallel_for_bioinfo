@@ -441,3 +441,11 @@ eval $ASSIGNMENTS
 
 # see that the variables D, E, and F have values assigned:
 echo $D, $E, $F
+
+##
+# same as above, but quit processing the file as soon as you hit
+# an @SQ line with a sequence name starting with "NW_"
+awk '
+  /^@SQ/ && /SN:NC_/ {print}
+  /^@SQ/ && /SN:NW_/ {exit}  
+' data/DPCh_plate1_F12_S72.sam
