@@ -66,3 +66,8 @@ as.data.frame(fread(reportPath,stringsAsFactors=FALSE))
 ## use regex
 lookaround <- "A penguin costs 2.99, a whale costs 5.99, I only have 3.50 left."
 stringr::str_extract_all(lookaround, "\\d\\.\\d{2}")
+#[1] "2.99" "5.99" "3.50"
+
+## "(?<=if preceded by this)match_this"
+prices <- str_extract_all(lookaround, "(?<=costs)\\s\\d\\.\\d{2}")
+#[1] " 2.99" " 5.99"
