@@ -401,3 +401,13 @@ done
 
 { cat FileA; echo xxxxx; cat FileB; NewVar=15; } > Both
 #the shell does know nothing about it FileB, notice the blank space after { and before }, those are required
+
+
+# here the cycled variable is "i"
+for i in some things separated by whitespace; do
+  commands involving $i
+done
+for i in oranges bananas apples; do
+  echo "I like $i"
+done
+
