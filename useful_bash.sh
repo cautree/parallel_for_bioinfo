@@ -377,3 +377,7 @@ echo ${FILE/my/your}
 ## my_picture.jpg
 ## my_picture.png
 ## your_picture.jpg
+
+
+## array in bash
+ArrayVariable=(words or things 'or stuff' separated 'by whitespace')
