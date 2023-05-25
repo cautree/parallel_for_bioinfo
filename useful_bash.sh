@@ -423,4 +423,5 @@ test $VAR = small_and_sweet
 #underscore, _, or a dash, -
 
 #alias ls='ls -GFh'
+#PATH=$PATH:/a-new/program/directory
 
