@@ -76,3 +76,6 @@ prices <- str_extract_all(lookaround, "(?<=costs)\\s\\d\\.\\d{2}")
 ## Look Aheads: "match this(?=if followed by this)"
 animals <- str_extract_all(lookaround, "\\w+\\s(?=costs)")
 #[1] "penguin " "whale "
+
+
+##in R studio, if you highlight some text and do CMD-Option-Return on a Mac, the text gets sent to the RStudio Unix Terminal
