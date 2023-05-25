@@ -367,3 +367,13 @@ awk '{sum+=$1} END {print sum/NR}' file	# 求第一列的平均数
 time command# 显示命令执行时间
 seq 10			# 产生1到10的整数
 md5sum			# 生成，或验证文件的MD5值
+
+
+#### notice how replacement is happening
+FILE=my_picture.jpg
+echo $FILE
+echo ${FILE/jpg/png}
+echo ${FILE/my/your}
+## my_picture.jpg
+## my_picture.png
+## your_picture.jpg
