@@ -383,4 +383,18 @@ echo ${FILE/my/your}
 ArrayVariable=(words or things 'or stuff' separated 'by whitespace')
 ##single-quoted groups of words are treated as single values that will be assigned to an array element as a group. 
 ##(Though the same is not true of double-quoted values…)
+echo $ArrayVariable
+## below are the two ways to get all the values at once as a single string
+echo ${ArrayVariable[*]} 
+echo ${ArrayVariable[@]}
+## check length
+echo ${#ArrayVariable[@]}
+for i in {0..5}; do
+  echo $i: ${ArrayVariable[$i]}
+done
 
+# $(command) ,it means take the output of the command and insert it into the command line.
+
+##grouped command, subshell
+(cat FileA; echo xxxxxxxxxxxx; cat FileB) > Both
+{ cat FileA; echo xxxxxxxxxxxx; cat FileB;} > Both
