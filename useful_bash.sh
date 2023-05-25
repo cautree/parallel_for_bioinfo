@@ -420,4 +420,4 @@ test $VAR = small_and_sweet
 
 #A[A-D]
 #img.{png,jpg,svg}
-
+#underscore, _, or a dash, -
