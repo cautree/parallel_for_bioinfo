@@ -449,3 +449,8 @@ awk '
   /^@SQ/ && /SN:NC_/ {print}
   /^@SQ/ && /SN:NW_/ {exit}  
 ' data/DPCh_plate1_F12_S72.sam
+
+
+## notice how gzcat is used
+# print only lines 101, and 103 from the fastq file
+gzcat data/DPCh_plate1_F12_S72.R1.fq.gz | awk 'NR==101 || NR==102 {print}'
