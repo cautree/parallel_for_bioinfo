@@ -381,3 +381,6 @@ echo ${FILE/my/your}
 
 ## array in bash
 ArrayVariable=(words or things 'or stuff' separated 'by whitespace')
+##single-quoted groups of words are treated as single values that will be assigned to an array element as a group. 
+##(Though the same is not true of double-quoted values…)
+
