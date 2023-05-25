@@ -396,5 +396,8 @@ done
 # $(command) ,it means take the output of the command and insert it into the command line.
 
 ##grouped command, subshell
-(cat FileA; echo xxxxxxxxxxxx; cat FileB) > Both
-{ cat FileA; echo xxxxxxxxxxxx; cat FileB;} > Both
+(cat FileA; echo xxxxx; cat FileB; NewVar=15) > Both
+#the shell knows nothing about it FileB
+
+{ cat FileA; echo xxxxx; cat FileB; NewVar=15; } > Both
+#the shell does know nothing about it FileB
