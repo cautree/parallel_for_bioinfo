@@ -430,3 +430,14 @@ echo -e Hi "\t\t\t" There "\n\n"
 echo -E Bye "\t\t\t" For now "\n\n"
 ## -n    Do not print the trailing newline character
 echo -n Good to see you "\n\n"
+
+
+## notice eval is need as otherwise = in the qutation is not recognized
+# create variable that is a line with assignments
+ASSIGNMENTS="D=four; E=five; F=six"
+
+# evaluate that line after variable substitution:
+eval $ASSIGNMENTS
+
+# see that the variables D, E, and F have values assigned:
+echo $D, $E, $F
