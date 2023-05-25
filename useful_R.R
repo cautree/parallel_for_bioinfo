@@ -71,3 +71,8 @@ stringr::str_extract_all(lookaround, "\\d\\.\\d{2}")
 ## "(?<=if preceded by this)match_this"
 prices <- str_extract_all(lookaround, "(?<=costs)\\s\\d\\.\\d{2}")
 #[1] " 2.99" " 5.99"
+
+
+## "match this(?=if followed by this)"
+animals <- str_extract_all(lookaround, "\\w+\\s(?=costs)")
+#[1] "penguin " "whale "
