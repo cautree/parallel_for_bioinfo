@@ -1,0 +1,12 @@
+samtools faidx GCA_002831465.1_CHI06_genomic.fna
+
+# that created the file: GCA_002831465.1_CHI06_genomic.fna.fai
+# which holds four columns that constitute the index
+
+# now we extract the four sequences:
+samtools faidx \
+    GCA_002831465.1_CHI06_genomic.fna \
+    CM009007.1:3913989-3914138 \
+    CM009011.1:2392339-2392488 \
+    CM009013.1:11855194-11855343 \
+    CM009019.1:1760297-1760446
