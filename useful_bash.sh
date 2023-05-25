@@ -445,6 +445,9 @@ echo $D, $E, $F
 ##
 # same as above, but quit processing the file as soon as you hit
 # an @SQ line with a sequence name starting with "NW_"
+
+##
+
 awk '
   /^@SQ/ && /SN:NC_/ {print}
   /^@SQ/ && /SN:NW_/ {exit}  
@@ -454,3 +457,6 @@ awk '
 ## notice how gzcat is used
 # print only lines 101, and 103 from the fastq file
 gzcat data/DPCh_plate1_F12_S72.R1.fq.gz | awk 'NR==101 || NR==102 {print}'
+
+
+## [ ]	Match any single character from a character class (see below)
