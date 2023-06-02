@@ -152,3 +152,9 @@ plot_data = cor_df_long %>%
   left_join( p_df_long, by = c("SPM1", "SPM2")) %>% 
   dplyr::mutate(SPM_cor = round(SPM_cor,2))
 names(plot_data) = c("response", "term",     "estimate", "p.value" )
+
+
+# use str_extract and group
+df_info_long = df_info %>% 
+  tidyr::gather(`PA_1`: `SE_3`, key = "position", value = "position_value") %>% 
+  mutate( position = stringr::str_extract(position, "(.*)_[1-3]", group =1)) 
