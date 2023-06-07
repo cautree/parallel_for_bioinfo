@@ -30,3 +30,7 @@ find . -name "*.fastq" | xargs basename -s ".fastq" | xargs -P 6 -I{} fastq_stat
 ## use awk to create scripts for automation
 cat sraids.txt | awk '{print "fastq-dump -X 2000 --split-files -0 sra" $1}' > get_data.sh
 bash get-data.sh
+
+
+## add prefix to all the folders in the current directory
+find * -maxdepth 0 -type d -exec mv {} Jupiter_{} \;
