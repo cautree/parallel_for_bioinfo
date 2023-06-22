@@ -257,3 +257,18 @@ from functools import reduce
 b = reduce(lambda x,y:x+y, b)
 dna_groups_new.append(a)
 dna_groups_new.append(b)
+
+
+
+# Merge two dictionaries with a comprehension
+team1 = {"Jones": 24, "Jameson": 18, "Smith": 58, "Burns": 7}
+team2 = {"White": 12, "Macke": 88, "Perce": 4}
+newTeam = {k: v for team in (team1, team2) for k, v in team.items()}
+print(newTeam)
+
+
+
+newTeam_1 = {k: v  for k, v in team1.items()}
+newTeam_2 = {k: v  for k, v in team2.items()}
+new = newTeam_1 | newTeam_2
+print(new)
