@@ -31,6 +31,24 @@ df_test["first_last"] = df_test.apply( lambda x: x.Name.split(', '), axis =1 )
 df_test[['first', 'last']] = pd.DataFrame(df_test["first_last"].tolist(), index=df_test.index)
 
 
+## create a flag column
+df_test["age_na"] = [ 1 if pd.isna(x) else 0 for x in df_test.Age]
+
+def get_age(x,y,z): # x Age, y age_na, z Pclass
+    if y== 0:
+        x = x
+    else:
+        if z == 1:
+            x = 37
+        elif z ==2:
+            x= 29
+        else:
+            x = 24
+    return x
+## impute based on two column info
+df_test["age_imputated"] = df_test.apply( lambda x: get_age(x.Age, x.age_na, x.Pclass), axis =1)
+
+
 
 
 
