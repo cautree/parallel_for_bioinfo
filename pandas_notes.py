@@ -67,6 +67,13 @@ df_test["age_group"] = df_test.apply(lambda x: create_age_groups(x.age_imputated
 df_test.age_group.value_counts( dropna = False )
 
 
+## another to it is to use pd.cut
+bins=[0, 13, 19, 61, sys.maxsize]
+labels=['<12', 'Teen', 'Adult', 'Older']
+df_test[ "age_cat"] =  pd.cut(df_test.Age, bins = bins, labels = labels)
+df_test
+
+
 
 
 
