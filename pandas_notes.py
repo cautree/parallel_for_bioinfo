@@ -50,6 +50,23 @@ df_test["age_imputated"] = df_test.apply( lambda x: get_age(x.Age, x.age_na, x.P
 
 
 
+## create a category group when the categories are more than 2
+def create_age_groups( age):
+    if age <=12:
+        age_cat = "child"
+    elif age <=18:
+        age_cat = "Teen"
+    elif age <=60:
+        age_cat = "Adult"
+    else:
+        age_cat = "Senior"
+    return age_cat
+
+
+df_test["age_group"] = df_test.apply(lambda x: create_age_groups(x.age_imputated) , axis =1)
+df_test.age_group.value_counts( dropna = False )
+
+
 
 
 
