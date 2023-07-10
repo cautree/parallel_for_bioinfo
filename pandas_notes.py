@@ -74,6 +74,13 @@ df_test[ "age_cat"] =  pd.cut(df_test.Age, bins = bins, labels = labels)
 df_test
 
 
+# A lambda expression for Standardization.
+standardization = lambda x: (x - x.mean()) / x.std()
+mtcars_s = mtcars.select_dtypes(include = 'float64')
+mtcars_sd = mtcars_s.apply( standardization)
+mtcars_sd = mtcars_s.transform( standardization)
+
+
 
 
 
