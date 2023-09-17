@@ -1,0 +1,65 @@
+import snakemake 
+import os
+import re
+
+ends = ["R1", "R2"]
+wells = ["A"]
+positions = ["01", "02", "03"]
+
+samples: list[str] = [
+    "230315_UDI-2_PlexA"
+
+]
+
+# Rule 'all', defining all requested output.
+rule all:
+    input: 
+        expand("sequence/{sample}_{well}{position}_{end}_001.txt", 
+                                                             sample = samples, 
+                                                             end = ends,
+                                                             well = wells,
+                                                             position = positions
+                                                             ),
+        expand("stats/{sample}_{well}{position}_{end}_001.fqchk.txt", sample = samples, 
+                                                             end = ends,
+                                                             well = wells,
+                                                             position = positions
+                                                             ),
+        expand("counts/{sample}_{well}{position}_{end}_001.count.csv", sample = samples, 
+                                                             end = ends,
+                                                             well = wells,
+                                                             position = positions
+                                                             )
+
+
+rule get_sequence: 
+    input:
+        r2 = "fastq/{sample}_{well}{position}_{end}_001.fastq.gz"
+    output:
+        r2_seq = "sequence/{sample}_{well}{position}_{end}_001.txt"
+    shell:
+        """
+        
+        zcat < {input.r2} | paste - - - - | cut -f2 > {output.r2_seq}
+        """
+        
+rule get_stats:
+    input:
+        r2 = "fastq/{sample}_{well}{position}_{end}_001.fastq.gz"
+    output:
+        r2_quality = "stats/{sample}_{well}{position}_{end}_001.fqchk.txt"
+    shell:
+        """
+        
+        seqtk fqchk  {input.r2} > {output.r2_quality}
+        """
+
+
+rule get_counts:
+    input:
+        r2 = "sequence/{sample}_{well}{position}_{end}_001.txt"
+    output:
+        r2_counts = "counts/{sample}_{well}{position}_{end}_001.count.csv"
+    script:
+        "scripts/counts.py"
+      
